@@ -6,7 +6,7 @@ amqp.connect(function (err0, connection) {
     if (err1) throw err1;
     const queue = "task_queue";
     channel.assertQueue(queue, {
-      durable: false,
+      durable: true,
     });
     channel.consume(
       queue,

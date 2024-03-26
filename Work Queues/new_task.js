@@ -11,7 +11,7 @@ amqp.connect(function (err0, connection) {
     var queue = "task_queue";
     var msg = process.argv.slice(2).join(" ") || "Hello World!";
     channel.assertQueue(queue, {
-      durable: false,
+      durable: true,
     });
 
     channel.sendToQueue(queue, Buffer.from(msg), {
@@ -21,6 +21,6 @@ amqp.connect(function (err0, connection) {
   });
   setTimeout(function () {
     connection.close();
-    process.exit();
+    process.exit(0);
   }, 500);
 });
